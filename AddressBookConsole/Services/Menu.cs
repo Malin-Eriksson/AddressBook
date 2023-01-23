@@ -1,11 +1,18 @@
 ﻿using AddressBookConsole.Interfaces;
 using AddressBookConsole.Models;
-using System.Runtime.CompilerServices;
+using Newtonsoft.Json;
+using System;
 
 namespace AddressBookConsole.Services;
 
 internal class Menu
 {
+    public List<IContact> contacts = new List<IContact>();
+
+    private FileService file = new FileService();
+
+    public string FilePath { get; set; } = null!;
+
     public void OptionsMenu()
     {
         Console.Clear();
@@ -35,24 +42,33 @@ internal class Menu
         IContact contact = new Contact();
 
         Console.Write("First name:");
-        contact.FirstName = Console.ReadLine() ?? null!;
+        contact.FirstName = Console.ReadLine() ?? "";
         Console.Write("Last name:");
-        contact.LastName = Console.ReadLine() ?? null!;
+        contact.LastName = Console.ReadLine() ?? "";
         Console.Write("Email address:");
-        contact.Email = Console.ReadLine() ?? null!;
+        contact.Email = Console.ReadLine() ?? "";
         Console.Write("Phone number:");
-        contact.PhoneNumber = Console.ReadLine() ?? null!;
+        contact.PhoneNumber = Console.ReadLine() ?? "";
         Console.Write("Address:");
-        contact.Address = Console.ReadLine() ?? null!;
+        contact.Address = Console.ReadLine() ?? "";
         Console.Write("Postal code:");
-        contact.PostalCode = Console.ReadLine() ?? null!;
+        contact.PostalCode = Console.ReadLine() ?? "";
         Console.Write("City:");
-        contact.City = Console.ReadLine() ?? null!;
+        contact.City = Console.ReadLine() ?? "";
 
+        contacts.Add(contact);
+        Console.Clear();
+        Console.WriteLine("Contact added!");
+        Console.Clear();
+
+        file.Save(FilePath, JsonConvert.SerializeObject(new { contacts }));
 
     }
-    private void Option2()
+    private string Option2()
     {
+        Console.Clear();
+        return JsonConvert.SerializeObject(contacts, Formatting.Indented);
+        Console.ReadLine();
 
     }
     private void Option3()

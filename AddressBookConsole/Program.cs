@@ -1,2 +1,13 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using AddressBookConsole.Services;
+
+var Menu = new Menu();
+
+Menu.FilePath = @$"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}\content.json";
+
+
+while (true)
+{
+    Console.Clear();
+    Menu.OptionsMenu();
+
+}
