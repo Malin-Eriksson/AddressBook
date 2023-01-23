@@ -2,12 +2,13 @@
 using AddressBookConsole.Models;
 using Newtonsoft.Json;
 using System;
+using System.Security.Cryptography.X509Certificates;
 
 namespace AddressBookConsole.Services;
 
 internal class Menu
 {
-    public List<IContact> contacts = new List<IContact>();
+    public List<Contact> contacts = new List<Contact>();
 
     private FileService file = new FileService();
 
@@ -39,7 +40,7 @@ internal class Menu
         Console.Clear();
         Console.WriteLine("Add new contact");
 
-        IContact contact = new Contact();
+        Contact contact = new Contact();
 
         Console.Write("First name:");
         contact.FirstName = Console.ReadLine() ?? "";
@@ -61,16 +62,33 @@ internal class Menu
         Console.WriteLine("Contact added!");
         Console.Clear();
 
-        file.Save(FilePath, JsonConvert.SerializeObject(new { contacts }));
+        file.Save(FilePath, JsonConvert.SerializeObject(contacts ));
 
     }
-    private string Option2()
+    private void Option2()
     {
-        Console.Clear();
-        return JsonConvert.SerializeObject(contacts, Formatting.Indented);
-        Console.ReadLine();
+        try
+        {
+            var items = JsonConvert.DeserializeObject<List<Contact>>(file.Read(FilePath));
+            if (items != null)
+                contacts = items;
+
+
+
+        }
+        catch { }
+
+        foreach (var contact in contacts)
+        {
+            Console.WriteLine("\n" + contact.FirstName + " " + contact.LastName + "\n" + contact.Address + "\n" + contact.PostalCode + "\n" + contact.City + "\n" + contact.PhoneNumber + "\n" + contact.Email + "\n");
+            
+
+        }
+
+        Console.ReadKey();
 
     }
+
     private void Option3()
     {
 
