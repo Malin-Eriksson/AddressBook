@@ -2,6 +2,7 @@
 using AddressBookConsole.Models;
 using Newtonsoft.Json;
 using System;
+using System.Linq.Expressions;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
@@ -34,15 +35,24 @@ internal class Menu
         switch (option)
         {
             case "1": Option1(); break;
-            case "2": Option2(); break;
+            case "2": ShowAllContacts(); break;
             case "3": ShowSelectedContact(); break;
-            case "4": Option4(); break;
+            case "4": DeleteSelectedContact(); break;
             case "9": Environment.Exit(1); break;
         }
     }
 
     private void Option1()
     {
+        // Read contacts from file
+        try
+        {
+            var items = JsonConvert.DeserializeObject<List<Contact>>(file.Read(FilePath));
+            if (items != null)
+                contacts = items;
+        }
+        catch { }
+
         Console.Clear();
         Console.WriteLine("ADD NEW CONTACT");
         Console.WriteLine("-----------------------------------------");
@@ -74,26 +84,10 @@ internal class Menu
         
 
     }
-    private void Option2()
+    private void ShowAllContacts()
     {
-        Console.Clear(); 
-
-        try
-        {
-            var items = JsonConvert.DeserializeObject<List<Contact>>(file.Read(FilePath));
-            if (items != null)
-                contacts = items;
-        }
-        catch { }
-
-        Console.WriteLine("CONTACTS");
-        Console.WriteLine("-----------------------------------------");
-
-        foreach (var contact in contacts)
-        {
-            Console.WriteLine("\n" + contact.FirstName + " " + contact.LastName + "\n" + contact.Email + "\n");
-            
-        }
+        // List Contacts
+        ListContacts();
 
         Console.WriteLine("\nPress any key to continue...");
         Console.ReadKey();
@@ -102,10 +96,25 @@ internal class Menu
 
     private void ShowSelectedContact()
     {
-        // Clear screen
-        Console.Clear();
 
-        // Read file
+        // List Contacts
+        ListContacts();
+
+        // Ask for contact to show
+        Console.WriteLine("\nEnter contact number to show");
+        string ContactNumberString = Console.ReadLine() ?? "";
+
+        // Show Contact
+        int ContactNumber = Convert.ToInt32(ContactNumberString);
+        ShowContact(contacts[ContactNumber]);
+
+        Console.WriteLine("\nPress any key to continue...");
+        Console.ReadKey();
+    }
+
+    private void ListContacts()
+    {
+        // Read contacts from file
         try
         {
             var items = JsonConvert.DeserializeObject<List<Contact>>(file.Read(FilePath));
@@ -114,7 +123,10 @@ internal class Menu
         }
         catch { }
 
-        // Preapare screen
+        // Clear screen
+        Console.Clear();
+        
+        // Prepare screen
         Console.WriteLine("CONTACTS");
         Console.WriteLine("-----------------------------------------");
 
@@ -122,26 +134,14 @@ internal class Menu
         int ContactNumber = 0;
         string ContactNumberString = "";
 
-
         // Loop and write contacts
-        // foreach (var contact in contacts)
         for (ContactNumber = 0; ContactNumber < contacts.Count; ContactNumber++)
         {
             ContactNumberString = Convert.ToString(ContactNumber);
             Console.WriteLine("\n" + ContactNumberString + " " + contacts[ContactNumber].FirstName + " " + contacts[ContactNumber].LastName + "\n" + contacts[ContactNumber].Email + "\n");
         }
-
-        // Ask for contact to show
-        Console.WriteLine("\nEnter contact number to show");
-        ContactNumberString = Console.ReadLine() ?? "";
-
-        // Show Contact
-        ContactNumber = Convert.ToInt32(ContactNumberString);
-        ShowContact(contacts[ContactNumber]);
-
-        Console.WriteLine("\nPress any key to continue...");
-        Console.ReadKey();
     }
+
 
     private void ShowContact(Contact c)
     {
@@ -154,10 +154,62 @@ internal class Menu
         Console.WriteLine(c.PhoneNumber);
     }
 
+   
 
-
-    private void Option4()
+private void DeleteSelectedContact()
     {
+
+        // Clear screen
+        Console.Clear();
+
+        // List Contacts
+        ListContacts();
+
+        Console.WriteLine("\nEnter contact number to DELETE");
+        string ContactNumberString = Console.ReadLine() ?? "";
+
+        // Clear screen
+        Console.Clear();
+
+        // Show Contact
+        int ContactNumber = Convert.ToInt32(ContactNumberString);
+        ShowContact(contacts[ContactNumber]);
+
+        // Confirm
+        Console.WriteLine("\nAre you sure you want to delete this contact? (y/n)");
+        string OkToDelete = Console.ReadLine() ?? "";
+        if (OkToDelete == "y" || OkToDelete == "Y")
+        {
+            // Delete
+            try
+            {
+                contacts.RemoveAt(ContactNumber);
+            }
+            catch
+            {
+                Console.WriteLine("Could not delete contact.");
+                return;
+            }
+
+            // Save file
+            try
+            {
+                file.Save(FilePath, JsonConvert.SerializeObject(contacts));
+            }
+            catch
+            {
+                Console.WriteLine("Could not save list of contacts after delete.");
+                return;
+            }
+
+            Console.WriteLine("Contact deleted");
+        }
+        else
+        {
+            Console.WriteLine("Vadådå?");
+        }
+
+
 
     }
 
