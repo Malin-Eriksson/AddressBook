@@ -17,6 +17,7 @@ internal class Menu
 
     public string FilePath { get; set; } = null!;
 
+    //Main menu
     public void OptionsMenu()
     {
         Console.Clear();
@@ -32,9 +33,10 @@ internal class Menu
 
         var option = Console.ReadLine();
 
+        //Switch options main menu
         switch (option)
         {
-            case "1": Option1(); break;
+            case "1": AddContact(); break;
             case "2": ShowAllContacts(); break;
             case "3": ShowSelectedContact(); break;
             case "4": DeleteSelectedContact(); break;
@@ -42,17 +44,13 @@ internal class Menu
         }
     }
 
-    private void Option1()
+    //ADD CONTACT
+    private void AddContact()
     {
         // Read contacts from file
-        try
-        {
-            var items = JsonConvert.DeserializeObject<List<Contact>>(file.Read(FilePath));
-            if (items != null)
-                contacts = items;
-        }
-        catch { }
+        ReadContacts();
 
+        //Enter contact info
         Console.Clear();
         Console.WriteLine("ADD NEW CONTACT");
         Console.WriteLine("-----------------------------------------");
@@ -74,6 +72,8 @@ internal class Menu
         Console.Write("City: ");
         contact.City = Console.ReadLine() ?? "";
 
+
+        //Save contact
         contacts.Add(contact);
         file.Save(FilePath, JsonConvert.SerializeObject(contacts));
 
@@ -84,6 +84,7 @@ internal class Menu
         
 
     }
+    //SHOW ALL CONTACTS
     private void ShowAllContacts()
     {
         // List Contacts
@@ -94,6 +95,7 @@ internal class Menu
 
     }
 
+    //SHOW SELECTED CONTACT
     private void ShowSelectedContact()
     {
 
@@ -112,16 +114,12 @@ internal class Menu
         Console.ReadKey();
     }
 
+    //Function to list contacts
     private void ListContacts()
     {
         // Read contacts from file
-        try
-        {
-            var items = JsonConvert.DeserializeObject<List<Contact>>(file.Read(FilePath));
-            if (items != null)
-                contacts = items;
-        }
-        catch { }
+        ReadContacts();
+
 
         // Clear screen
         Console.Clear();
@@ -138,7 +136,23 @@ internal class Menu
         for (ContactNumber = 0; ContactNumber < contacts.Count; ContactNumber++)
         {
             ContactNumberString = Convert.ToString(ContactNumber);
-            Console.WriteLine("\n" + ContactNumberString + " " + contacts[ContactNumber].FirstName + " " + contacts[ContactNumber].LastName + "\n" + contacts[ContactNumber].Email + "\n");
+            Console.WriteLine("\n" + ContactNumberString + " " + contacts[ContactNumber].FirstName + " " + contacts[ContactNumber].LastName);
+            Console.WriteLine("  " + contacts[ContactNumber].Email + "\n");
+        }
+    }
+
+    // Function to read contacts
+    private void ReadContacts()
+    {
+        try
+        {
+            var items = JsonConvert.DeserializeObject<List<Contact>>(file.Read(FilePath));
+            if (items != null)
+                contacts = items;
+        }
+        catch 
+        {
+            Console.WriteLine("Could not read contacts from file.");
         }
     }
 
@@ -149,13 +163,15 @@ internal class Menu
         Console.Clear();
 
         // Show contact
-        Console.WriteLine(c.FirstName);
-        Console.WriteLine(c.LastName);
-        Console.WriteLine(c.PhoneNumber);
+        Console.WriteLine("First name: " + c.FirstName);
+        Console.WriteLine("Last name: " + c.LastName);
+        Console.WriteLine("Email address: " + c.Email);
+        Console.WriteLine("Phone number: " + c.PhoneNumber);
+        Console.WriteLine("Address: " + c.Address + ", " + c.PostalCode + " " + c.City);
     }
 
    
-
+//DELETE CONTACT
 private void DeleteSelectedContact()
     {
 
@@ -198,15 +214,21 @@ private void DeleteSelectedContact()
             }
             catch
             {
-                Console.WriteLine("Could not save list of contacts after delete.");
+                Console.WriteLine("Could not save list of contacts after deletion.");
                 return;
             }
 
-            Console.WriteLine("Contact deleted");
+            Console.WriteLine("Contact deleted! Press any key to continue...");
+            Console.ReadKey();
+        }
+        else if (OkToDelete == "n" || OkToDelete == "N")
+        {
+            Console.WriteLine("Contact not deleted. Press any key to continue...");
+            Console.ReadKey();
         }
         else
         {
-            Console.WriteLine("Vadådå?");
+            
         }
 
 
