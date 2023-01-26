@@ -26,8 +26,7 @@ internal class Menu
         Console.WriteLine("1. Create new contact");
         Console.WriteLine("2. Show all contacts");
         Console.WriteLine("3. Show contact");
-        Console.WriteLine("4. Delete contact");
-        Console.WriteLine(""); 
+        Console.WriteLine("4. Delete contact\n");
         Console.WriteLine("9. Exit");
         Console.Write("\nChoose an option from the menu above: ");
 
@@ -231,10 +230,6 @@ private void DeleteSelectedContact()
             
         }
 
-
-
     }
-
-
 
 }
