@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace AddressBookWPF.MVVM.Views
 {
     /// <summary>
-    /// Interaction logic for TodosView.xaml
+    /// Interaction logic for AddContactView.xaml
     /// </summary>
-    public partial class TodosView : UserControl
+    public partial class AddContactView : UserControl
     {
-        public TodosView()
+        public AddContactView()
         {
             InitializeComponent();
         }

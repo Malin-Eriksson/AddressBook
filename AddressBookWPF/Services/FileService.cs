@@ -10,10 +10,40 @@ using System.Threading.Tasks;
 
 namespace AddressBookWPF.Services
 {
-    class FileService
+    public class FileService
     {
-        private string filePath = $@"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}\todos.json";
-        private List<TodoModel> todos;
+        private string _filePath;
+        
+        public FileService(string filePath)
+        {
+            _filePath = filePath;
+        }
+
+
+       public string ReadFromFile()
+        {
+            if(File.Exists(_filePath)) 
+            {
+                using var sr = new StreamReader(_filePath);
+                return sr.ReadToEnd();
+            }
+
+            return string.Empty;
+            
+        }
+            
+        public void SaveFile(string contentAddressBook)
+        {
+            using var sw = new StreamWriter(_filePath);
+            sw.Write(contentAddressBook);
+        }
+            
+            
+            
+          
+       /*     
+        
+        private List<ContactModel> contacts;
 
 
         public FileService()
@@ -25,33 +55,33 @@ namespace AddressBookWPF.Services
         {
             try
             {
-                using var sr = new StreamReader(filePath);
-                todos = JsonConvert.DeserializeObject<List<TodoModel>>(sr.ReadToEnd())!;
+                using var sr = new StreamReader(_filePath);
+                contacts = JsonConvert.DeserializeObject<List<ContactModel>>(sr.ReadToEnd())!;
             }
-            catch { todos = new List<TodoModel>(); }
+            catch { contacts = new List<ContactModel>(); }
         }
 
 
         private void SaveToFile()
         {
-            using var sw = new StreamWriter(filePath);
-            sw.WriteLine(JsonConvert.SerializeObject(todos));
+            using var sw = new StreamWriter(_filePath);
+            sw.WriteLine(JsonConvert.SerializeObject(contacts));
         }
 
-        public void AddToList(TodoModel todo)
+        public void AddToList(ContactModel contact)
         {
-            todos.Add(todo);
+            contacts.Add(contact);
             SaveToFile();
         }
 
-        public ObservableCollection<TodoModel> Todos()
+        public ObservableCollection<ContactModel> Contacts()
         {
-            var items = new ObservableCollection<TodoModel>();
-            foreach (var todo in todos)
-                items.Add(todo);
+            var items = new ObservableCollection<ContactModel>();
+            foreach (var contact in contacts)
+                items.Add(contact);
 
             return items;
-        }
+        }*/
 
     }
 }

@@ -8,31 +8,29 @@
         xmlns:views="clr-namespace:AddressBookWPF.MVVM.Views"
         d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
         
+        
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="60" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Column="0">
-            <Button Command="{Binding GoToAddTodoCommand}" Content="&#xf872;" Style="{StaticResource navButton}" />
-            <Button Command="{Binding GoToTodosCommand}" Content="&#xf022;" Style="{StaticResource navButton}" />
+            <Button Command="{Binding GoToAddContactCommand}" Content="&#xf872;" Style="{StaticResource navButton}" />
+            <Button Command="{Binding GoToContactsCommand}" Content="&#xf022;" Style="{StaticResource navButton}" />
         </StackPanel>
 
         <ContentControl Grid.Column="1" Content="{Binding CurrentViewModel}">
             <ContentControl.Resources>
-                <DataTemplate DataType="{x:Type viewmodels:TodosViewModel}">
-                    <views:TodosView />
+                <DataTemplate DataType="{x:Type viewmodels:ContactsViewModel}">
+                    <views:ContactsView />
                 </DataTemplate>
-                <DataTemplate DataType="{x:Type viewmodels:AddTodoViewModel}">
-                    <views:AddTodoView />
+                <DataTemplate DataType="{x:Type viewmodels:AddContactViewModel}">
+                    <views:AddContactView />
                 </DataTemplate>
             </ContentControl.Resources>
         </ContentControl>
-        
-      
-        
     </Grid>
 </Window>

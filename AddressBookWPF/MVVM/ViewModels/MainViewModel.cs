@@ -1,31 +1,27 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace AddressBookWPF.MVVM.ViewModels
 {
     public partial class MainViewModel : ObservableObject
     {
         [ObservableProperty]
-        private ObservableObject currentViewModel;
+        private ObservableObject currentViewModel = new ContactsViewModel();
 
         //Navigation
-        [RelayCommand]
-        private void GoToAddTodo() => CurrentViewModel = new AddTodoViewModel();
-
 
         [RelayCommand]
-        private void GoToTodos () => CurrentViewModel = new TodosViewModel();
-
+        private void GoToAddContact() => CurrentViewModel = new AddContactViewModel();
         
+
+        [RelayCommand]
+        private void GoToContacts() => CurrentViewModel = new ContactsViewModel();
+     
 
         public MainViewModel()
         {
-            CurrentViewModel = new TodosViewModel();
+            CurrentViewModel = new ContactsViewModel();
         }
     }
 }
