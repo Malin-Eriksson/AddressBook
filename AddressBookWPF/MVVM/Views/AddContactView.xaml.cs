@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AddressBookWPF.MVVM.Models;
+using AddressBookWPF.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,16 @@ namespace AddressBookWPF.MVVM.Views
         public AddContactView()
         {
             InitializeComponent();
+        }
+
+        private void btn_add_Click(object sender, RoutedEventArgs e)
+        {
+            var button = (Button)sender;
+            var contact = (ContactModel)button.DataContext;
+
+
+            ContactService.Add(contact);
+
         }
     }
 }
