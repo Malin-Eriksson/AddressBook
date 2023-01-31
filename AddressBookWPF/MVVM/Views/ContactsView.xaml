@@ -59,7 +59,7 @@
                 </TextBlock>
 
                 <Button Command="{Binding RemoveCommand}" Content="Remove" Width="100"/>
-                <Button Command = "{Binding GoToContactsCommand}" Content="&#xf022;" Style="{StaticResource navButton}" />
+                <Button Command = "{Binding GoToUpdateContactCommand}" Content="Edit" Width="100" />
             </StackPanel>
 
         </Grid>

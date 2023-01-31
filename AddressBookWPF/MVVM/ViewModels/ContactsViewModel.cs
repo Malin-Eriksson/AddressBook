@@ -4,17 +4,20 @@ using AddressBookWPF.MVVM.Models;
 using AddressBookWPF.Services;
 using CommunityToolkit.Mvvm.Input;
 using System;
+using System.Windows;
 
 namespace AddressBookWPF.MVVM.ViewModels
 {
     public partial class ContactsViewModel : ObservableObject
     {
-/*        private readonly FileService fileService;
-        public ContactsViewModel()
-        {
-            fileService = new FileService($@"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}\contentAddressBook.json");
-            contacts = fileService.Contacts();
-        }*/
+        /*        private readonly FileService fileService;
+                public ContactsViewModel()
+                {
+                    fileService = new FileService($@"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}\contentAddressBook.json");
+                    contacts = fileService.Contacts();
+                }*/
+
+
 
         [ObservableProperty]
         private string pageTitle = "Contacts";
@@ -29,8 +32,24 @@ namespace AddressBookWPF.MVVM.ViewModels
         [RelayCommand]
         public void Remove()
         {
-            ContactService.Remove(SelectedContact);
+            string mb_message = "Are you sure you want to delete this contact?";
+            string mb_title = "Delete contact";
+            MessageBoxButton buttons = MessageBoxButton.YesNo;
+            MessageBoxImage mb_icon = MessageBoxImage.Question;
+            MessageBoxResult result;
+
+            
+            result = MessageBox.Show(mb_message, mb_title, buttons, mb_icon, MessageBoxResult.Yes);
+            
+            if (result == MessageBoxResult.Yes) 
+            {
+                ContactService.Remove(SelectedContact);
+            }
+            else { }
+            
         }
-  
+
+
+
     }
 }

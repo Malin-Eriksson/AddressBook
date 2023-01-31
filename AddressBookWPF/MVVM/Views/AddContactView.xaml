@@ -9,7 +9,7 @@
              xmlns:views="clr-namespace:AddressBookWPF.MVVM.Views"
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance Type=viewmodels:AddContactViewModel}"
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="800" d:DesignWidth="800">
 
 
     <Grid Margin="40">
@@ -18,19 +18,28 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
+
+
         <TextBlock Grid.Row="0" Text="{Binding PageTitle}" FontSize="22" FontWeight="Medium" Margin="0 0 0 50" />
 
         <StackPanel Grid.Row="2">
-            <TextBlock Text="Enter contact information." />
-            <TextBox Text="{Binding ContactModel.FirstName}" Padding="5" Margin="0 5 0 5" Width="400" HorizontalAlignment="left" />
-            <TextBox Text="{Binding ContactModel.LastName}" Padding="5" Margin="0 5 0 5" Width="400" HorizontalAlignment="left" />
-            <TextBox Text="{Binding ContactModel.Email}" Padding="5" Margin="0 5 0 5" Width="400" HorizontalAlignment="left" />
-            <TextBox Text="{Binding ContactModel.PhoneNumber}" Padding="5" Margin="0 5 0 5" Width="400" HorizontalAlignment="left" />
-            <TextBox Text="{Binding ContactModel.StreetAddress}" Padding="5" Margin="0 5 0 5" Width="400" HorizontalAlignment="left" />
-            <TextBox Text="{Binding ContactModel.PostalCode}" Padding="5" Margin="0 5 0 5" Width="400" HorizontalAlignment="left" />
-            <TextBox Text="{Binding ContactModel.City}" Padding="5" Margin="0 5 0 5" Width="400" HorizontalAlignment="left" />
 
-            <Button Command="{Binding AddCommand}" Content="ADD CONTACT" Padding="8" Width="100"/>
+            <TextBlock Text="First name: " HorizontalAlignment="left" />
+            <TextBox x:Name="tb_firstName" Text="{Binding ContactModel.FirstName}" Padding="5" Margin="0 5 0 5" Width="400"  HorizontalAlignment="Left" />
+            <TextBlock Text="Last name: " />
+            <TextBox x:Name="tb_lastName" Text="{Binding ContactModel.LastName}" Padding="5" Margin="0 5 0 5" Width="400" HorizontalAlignment="left" />
+            <TextBlock Text="Email address: " />
+            <TextBox x:Name="tb_email" Text="{Binding ContactModel.Email}" Padding="5" Margin="0 5 0 5" Width="400" HorizontalAlignment="left" />
+            <TextBlock Text="Phone number: " />
+            <TextBox x:Name="tb_phoneNumber" Text="{Binding ContactModel.PhoneNumber}" Padding="5" Margin="0 5 0 5" Width="400" HorizontalAlignment="left" />
+            <TextBlock Text="Street address: " />
+            <TextBox x:Name="tb_streetAddress" Text="{Binding ContactModel.StreetAddress}" Padding="5" Margin="0 5 0 5" Width="400" HorizontalAlignment="left" />
+            <TextBlock Text="Postal code: " />
+            <TextBox x:Name="tb_postalCode" Text="{Binding ContactModel.PostalCode}" Padding="5" Margin="0 5 0 5" Width="400" HorizontalAlignment="left" />
+            <TextBlock Text="City: " />
+            <TextBox x:Name="tb_city" Text="{Binding ContactModel.City}" Padding="5" Margin="0 5 0 5" Width="400" HorizontalAlignment="left" />
+
+            <Button x:Name="Update" Click="Update_Click" Command="{Binding AddCommand}" Content="ADD CONTACT" Padding="8" Width="100" HorizontalAlignment="left"/>
         </StackPanel>
     </Grid>
 </UserControl>

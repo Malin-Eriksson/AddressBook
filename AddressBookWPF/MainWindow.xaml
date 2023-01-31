@@ -10,7 +10,7 @@
         
         
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="650" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="60" />
@@ -28,6 +28,9 @@
                     <views:ContactsView />
                 </DataTemplate>
                 <DataTemplate DataType="{x:Type viewmodels:AddContactViewModel}">
+                    <views:AddContactView />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodels:UpdateContactViewModel}">
                     <views:AddContactView />
                 </DataTemplate>
             </ContentControl.Resources>

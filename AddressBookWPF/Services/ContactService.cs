@@ -28,8 +28,16 @@ namespace AddressBookWPF.Services
 
         public static void Add(ContactModel model)
         {
-            contacts.Add(model);
-            fileService.SaveFile(JsonConvert.SerializeObject(contacts));
+            if (contacts != null)
+            {
+                contacts.Add(model);
+                fileService.SaveFile(JsonConvert.SerializeObject(contacts));
+            }
+            else { 
+                contacts = new ObservableCollection<ContactModel>();
+                contacts.Add(model);
+                fileService.SaveFile(JsonConvert.SerializeObject(contacts));
+            }
         }
 
         public static void Remove(ContactModel model) 

@@ -1,6 +1,7 @@
 ﻿using AddressBookWPF.MVVM.Models;
 using AddressBookWPF.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,12 +12,12 @@ using System.Windows.Controls;
 
 namespace AddressBookWPF.MVVM.ViewModels
 {
-    public partial class UpdateContactViewModel : ObservableObject
+    public partial class EditContactViewModel : ObservableObject
     {
 
 
         [ObservableProperty]
-        private string pageTitle = "Update Contact";
+        private string pageTitle = "Edit Contact";
 
         [ObservableProperty]
         private ObservableCollection<ContactModel> contacts = ContactService.Contacts();
@@ -24,6 +25,16 @@ namespace AddressBookWPF.MVVM.ViewModels
         [ObservableProperty]
         private string contact = string.Empty;
 
-        
+        [ObservableProperty]
+        private ContactModel contactModel = new ContactModel();
+
+        [RelayCommand]
+        public void Edit()
+        {
+            ContactService.Add(contactModel);
+            contactModel = new ContactModel();
+        }
+
+
     }
 }

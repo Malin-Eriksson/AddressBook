@@ -36,5 +36,17 @@ namespace AddressBookWPF.MVVM.Views
             ContactService.Add(contact);
 
         }
+
+        private void Update_Click(object sender, RoutedEventArgs e)
+        {
+
+            tb_firstName.Text= string.Empty;
+            tb_lastName.Text= string.Empty;
+            tb_email.Text= string.Empty;
+            tb_phoneNumber.Text= string.Empty;
+            tb_streetAddress.Text= string.Empty;
+            tb_postalCode.Text= string.Empty;
+            tb_city.Text= string.Empty; 
+        }
     }
 }

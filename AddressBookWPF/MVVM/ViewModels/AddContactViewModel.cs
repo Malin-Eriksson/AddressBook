@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace AddressBookWPF.MVVM.ViewModels
 {
@@ -33,18 +34,13 @@ namespace AddressBookWPF.MVVM.ViewModels
 
         [ObservableProperty]
         private ContactModel contactModel = new ContactModel();
+        
 
         [RelayCommand]
         public void Add()
         {
-            ContactService.Add(ContactModel);
-            ContactModel = new ContactModel();
+            ContactService.Add(contactModel);
+            contactModel = new ContactModel();
         }
-
-/*        [RelayCommand]
-        private void Add()
-        {
-            ContactService.Add(new ContactModel { contact });
-        }*/
     }   
 }

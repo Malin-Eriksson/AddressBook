@@ -17,7 +17,9 @@ namespace AddressBookWPF.MVVM.ViewModels
 
         [RelayCommand]
         private void GoToContacts() => CurrentViewModel = new ContactsViewModel();
-     
+
+
+
 
         public MainViewModel()
         {
