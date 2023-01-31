@@ -31,6 +31,16 @@ namespace AddressBookWPF.MVVM.ViewModels
         [ObservableProperty]
         private string contact = string.Empty;
 
+        [ObservableProperty]
+        private ContactModel contactModel = new ContactModel();
+
+        [RelayCommand]
+        public void Add()
+        {
+            ContactService.Add(ContactModel);
+            ContactModel = new ContactModel();
+        }
+
 /*        [RelayCommand]
         private void Add()
         {
