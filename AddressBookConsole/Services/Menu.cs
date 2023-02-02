@@ -9,7 +9,7 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace AddressBookConsole.Services;
 
-internal class Menu
+public class Menu
 {
     public List<Contact> contacts = new List<Contact>();
 
@@ -216,7 +216,7 @@ private void DeleteSelectedContact()
                 Console.WriteLine("Could not save list of contacts after deletion.");
                 return;
             }
-
+            Console.Clear();
             Console.WriteLine("Contact deleted! Press any key to continue...");
             Console.ReadKey();
         }

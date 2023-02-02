@@ -20,9 +20,9 @@ namespace AddressBookWPF.MVVM.Views
     /// </summary>
     public partial class UpdateContactView : UserControl
     {
-        public UpdateContactView()
+/*        public UpdateContactView()
         {
             InitializeComponent();
-        }
+        }*/
     }
 }
