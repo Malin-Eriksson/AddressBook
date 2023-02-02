@@ -27,6 +27,8 @@ namespace AddressBookWPF.MVVM.Views
             InitializeComponent();
         }
 
+
+
         private void btn_add_Click(object sender, RoutedEventArgs e)
         {
             ContactService.Add( new ContactModel {

@@ -11,6 +11,9 @@ namespace AddressBookWPF.Services
 {
     public static class ContactService
     {
+
+
+
         private static ObservableCollection<ContactModel> contacts;
         private static FileService fileService = new FileService($@"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}\contentAddressBook.json");
 
@@ -38,12 +41,18 @@ namespace AddressBookWPF.Services
                 contacts.Add(model);
                 fileService.SaveFile(JsonConvert.SerializeObject(contacts));
             }
-            // model = new ContactModel();
         }
+
 
         public static void Remove(ContactModel model) 
         {
             contacts.Remove(model);
+            fileService.SaveFile(JsonConvert.SerializeObject(contacts));
+        }
+
+
+        public static void Update(ContactModel model)
+        {
             fileService.SaveFile(JsonConvert.SerializeObject(contacts));
         }
 

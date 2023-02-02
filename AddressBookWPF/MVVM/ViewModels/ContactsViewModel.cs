@@ -49,6 +49,26 @@ namespace AddressBookWPF.MVVM.ViewModels
             
         }
 
+        [RelayCommand]
+        public void Update() 
+        {
+            string mb_message = "Are you sure you want to update the contact information?";
+            string mb_title = "Update contact";
+            MessageBoxButton buttons = MessageBoxButton.YesNo;
+            MessageBoxImage mb_icon = MessageBoxImage.Question;
+            MessageBoxResult result;
+
+
+            result = MessageBox.Show(mb_message, mb_title, buttons, mb_icon, MessageBoxResult.Yes);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                ContactService.Update(SelectedContact);
+            }
+            else { }
+
+        }
+
 
 
     }

@@ -34,32 +34,54 @@
                             </Grid.ColumnDefinitions>
 
                             <StackPanel Grid.Column="0" HorizontalAlignment="Left">
-                                <TextBlock Text="{Binding DisplayName}" />
+                                <TextBlock>
+                                    <Run Text="{Binding FirstName}"/>
+                                    <Run Text="{Binding LastName}" />
+                                </TextBlock>
                                 <TextBlock Text="{Binding Email}" />
                             </StackPanel>
-
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                <Button x:Name="btn_Edit" Click="btn_Edit_Click" Content="Edit" Width="50" Margin="5 0 0 0" />
-                                <Button x:Name="btn_Remove" Click="btn_Remove_Click" Content="Remove" Width="50" Margin="5 0 0 0" />
-                            </StackPanel>
-
                         </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
 
             <StackPanel Grid.Column="2" Margin="5 0 0 0">
-                <TextBlock Text="{Binding SelectedContact.DisplayName}" />
-                <TextBlock Text="{Binding SelectedContact.Email}" />
-                <TextBlock Text="{Binding SelectedContact.PhoneNumber}" />
-                <TextBlock Text="{Binding SelectedContact.StreetAddress}" />
-                <TextBlock>
-                    <Run Text="{Binding SelectedContact.PostalCode}" />
-                    <Run Text="{Binding SelectedContact.City}" />
-                </TextBlock>
 
-                <Button Command="{Binding RemoveCommand}" Content="Remove" Width="100"/>
-                <Button Command = "{Binding GoToUpdateContactCommand}" Content="Edit" Width="100" />
+                <TextBlock Text="Change the fields below to update contact information." Margin="5 5 5 15"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Grid.Column="0" Text="First name: " Width="90"/>
+                    <TextBox Grid.Column="1"  Text="{Binding SelectedContact.FirstName}" Width="200" />                    
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Grid.Column="0" Text="Last name: " Width="90"/>
+                    <TextBox Grid.Column="1"  Text="{Binding SelectedContact.LastName}" Width="200" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Grid.Column="0" Text="Email address: " Width="90"/>
+                    <TextBox Grid.Column="1"  Text="{Binding SelectedContact.Email}" Width="200" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Grid.Column="0" Text="Phone number: " Width="90"/>
+                    <TextBox Grid.Column="1"  Text="{Binding SelectedContact.PhoneNumber}" Width="200" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Grid.Column="0" Text="Street address: " Width="90"/>
+                    <TextBox Grid.Column="1"  Text="{Binding SelectedContact.StreetAddress}" Width="200" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Grid.Column="0" Text="Postal code: " Width="90"/>
+                    <TextBox Grid.Column="1"  Text="{Binding SelectedContact.PostalCode}" Width="200" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Grid.Column="0" Text="City: " Width="90"/>
+                    <TextBox Grid.Column="1"  Text="{Binding SelectedContact.City}" Width="200" />
+                </StackPanel>
+              
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Command="{Binding RemoveCommand}" Content="Remove" Width="100" Margin="5 15 5 5"/>
+                    <Button Command = "{Binding UpdateCommand}" Content="Save updates" Width="100" Margin="5 15 5 5" />
+                </StackPanel>
             </StackPanel>
 
         </Grid>

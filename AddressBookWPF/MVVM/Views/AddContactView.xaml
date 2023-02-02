@@ -43,4 +43,4 @@
         </StackPanel>
     </Grid>
 </UserControl>
-<!-- Click="ClearForm_Click" // Command="{Binding AddCommand}"-->
+
