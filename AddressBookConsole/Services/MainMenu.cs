@@ -9,7 +9,7 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace AddressBookConsole.Services;
 
-public class Menu
+public class MainMenu
 {
     public List<Contact> contacts = new List<Contact>();
 
