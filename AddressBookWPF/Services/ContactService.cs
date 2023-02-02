@@ -38,6 +38,7 @@ namespace AddressBookWPF.Services
                 contacts.Add(model);
                 fileService.SaveFile(JsonConvert.SerializeObject(contacts));
             }
+            // model = new ContactModel();
         }
 
         public static void Remove(ContactModel model) 

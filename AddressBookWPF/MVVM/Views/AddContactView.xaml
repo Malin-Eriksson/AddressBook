@@ -25,21 +25,22 @@
         <StackPanel Grid.Row="2">
 
             <TextBlock Text="First name: " HorizontalAlignment="left" />
-            <TextBox x:Name="tb_firstName" Text="{Binding ContactModel.FirstName}" Padding="5" Margin="0 5 0 5" Width="400"  HorizontalAlignment="Left" />
+            <TextBox x:Name="tb_firstName"  Padding="5" Margin="0 5 0 5" Width="400"  HorizontalAlignment="Left" />
             <TextBlock Text="Last name: " />
-            <TextBox x:Name="tb_lastName" Text="{Binding ContactModel.LastName}" Padding="5" Margin="0 5 0 5" Width="400" HorizontalAlignment="left" />
+            <TextBox x:Name="tb_lastName" Padding="5" Margin="0 5 0 5" Width="400" HorizontalAlignment="left" />
             <TextBlock Text="Email address: " />
-            <TextBox x:Name="tb_email" Text="{Binding ContactModel.Email}" Padding="5" Margin="0 5 0 5" Width="400" HorizontalAlignment="left" />
+            <TextBox x:Name="tb_email"  Padding="5" Margin="0 5 0 5" Width="400" HorizontalAlignment="left" />
             <TextBlock Text="Phone number: " />
-            <TextBox x:Name="tb_phoneNumber" Text="{Binding ContactModel.PhoneNumber}" Padding="5" Margin="0 5 0 5" Width="400" HorizontalAlignment="left" />
+            <TextBox x:Name="tb_phoneNumber" Padding="5" Margin="0 5 0 5" Width="400" HorizontalAlignment="left" />
             <TextBlock Text="Street address: " />
-            <TextBox x:Name="tb_streetAddress" Text="{Binding ContactModel.StreetAddress}" Padding="5" Margin="0 5 0 5" Width="400" HorizontalAlignment="left" />
+            <TextBox x:Name="tb_streetAddress" Padding="5" Margin="0 5 0 5" Width="400" HorizontalAlignment="left" />
             <TextBlock Text="Postal code: " />
-            <TextBox x:Name="tb_postalCode" Text="{Binding ContactModel.PostalCode}" Padding="5" Margin="0 5 0 5" Width="400" HorizontalAlignment="left" />
+            <TextBox x:Name="tb_postalCode" Padding="5" Margin="0 5 0 5" Width="400" HorizontalAlignment="left" />
             <TextBlock Text="City: " />
-            <TextBox x:Name="tb_city" Text="{Binding ContactModel.City}" Padding="5" Margin="0 5 0 5" Width="400" HorizontalAlignment="left" />
+            <TextBox x:Name="tb_city" Padding="5" Margin="0 5 0 5" Width="400" HorizontalAlignment="left" />
 
-            <Button x:Name="Update" Click="Update_Click" Command="{Binding AddCommand}" Content="ADD CONTACT" Padding="8" Width="100" HorizontalAlignment="left"/>
+            <Button x:Name="Add" Click="btn_add_Click"  Content="ADD CONTACT" Padding="8" Width="100" HorizontalAlignment="left"/>
         </StackPanel>
     </Grid>
 </UserControl>
+<!-- Click="ClearForm_Click" // Command="{Binding AddCommand}"-->

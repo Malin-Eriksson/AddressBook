@@ -39,6 +39,7 @@ namespace AddressBookWPF.MVVM.ViewModels
         [RelayCommand]
         public void Add()
         {
+
             ContactService.Add(contactModel);
             contactModel = new ContactModel();
         }

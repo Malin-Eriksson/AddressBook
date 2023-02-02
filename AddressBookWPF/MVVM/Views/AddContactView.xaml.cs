@@ -29,15 +29,27 @@ namespace AddressBookWPF.MVVM.Views
 
         private void btn_add_Click(object sender, RoutedEventArgs e)
         {
-            var button = (Button)sender;
-            var contact = (ContactModel)button.DataContext;
+            ContactService.Add( new ContactModel {
+                FirstName = tb_firstName.Text, 
+                LastName = tb_lastName.Text,
+                Email = tb_email.Text,
+                PhoneNumber = tb_phoneNumber.Text,
+                StreetAddress = tb_streetAddress.Text,
+                PostalCode = tb_postalCode.Text,
+                City = tb_city.Text
+            });
+
+            ClearForm();
+
+            /*  var button = (Button)sender;
+              var contact = (ContactModel)button.DataContext;
 
 
-            ContactService.Add(contact);
+              ContactService.Add(contact);*/
 
         }
 
-        private void Update_Click(object sender, RoutedEventArgs e)
+        private void ClearForm()
         {
 
             tb_firstName.Text= string.Empty;
