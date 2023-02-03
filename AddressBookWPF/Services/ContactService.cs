@@ -51,9 +51,18 @@ namespace AddressBookWPF.Services
         }
 
 
+
+
         public static void Update(ContactModel model)
         {
             fileService.SaveFile(JsonConvert.SerializeObject(contacts));
+        }
+
+
+        public static void CancelUpdate()
+        {
+            contacts = JsonConvert.DeserializeObject<ObservableCollection<ContactModel>>(fileService.ReadFromFile())!;
+            // Saknar funktion för att ladda om huvudsidan...
         }
 
         public static ObservableCollection<ContactModel> Contacts()

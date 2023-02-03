@@ -5,19 +5,16 @@ using AddressBookWPF.Services;
 using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Windows;
+using Newtonsoft.Json;
+using System.Linq;
 
 namespace AddressBookWPF.MVVM.ViewModels
 {
     public partial class ContactsViewModel : ObservableObject
     {
-        /*        private readonly FileService fileService;
-                public ContactsViewModel()
-                {
-                    fileService = new FileService($@"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}\contentAddressBook.json");
-                    contacts = fileService.Contacts();
-                }*/
 
 
+        private static FileService fileService = new FileService($@"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}\contentAddressBook.json");
 
         [ObservableProperty]
         private string pageTitle = "Contacts";
@@ -27,6 +24,9 @@ namespace AddressBookWPF.MVVM.ViewModels
 
         [ObservableProperty]
         private ContactModel selectedContact = null!;
+
+        
+
 
 
         [RelayCommand]
@@ -49,6 +49,9 @@ namespace AddressBookWPF.MVVM.ViewModels
             
         }
 
+
+
+
         [RelayCommand]
         public void Update() 
         {
@@ -69,6 +72,10 @@ namespace AddressBookWPF.MVVM.ViewModels
 
         }
 
+
+
+
+     
 
 
     }

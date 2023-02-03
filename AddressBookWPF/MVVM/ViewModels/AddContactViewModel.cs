@@ -14,13 +14,7 @@ namespace AddressBookWPF.MVVM.ViewModels
 {
     public partial class AddContactViewModel : ObservableObject
     {
-/*        private readonly FileService fileService;
 
-        public AddContactViewModel()
-        {
-            fileService = new FileService($@"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}\contentAddressBook.json");
-            contacts = fileService.Contacts();
-        }*/
 
 
         [ObservableProperty]

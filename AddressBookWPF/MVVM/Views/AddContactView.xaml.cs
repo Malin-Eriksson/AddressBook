@@ -29,6 +29,8 @@ namespace AddressBookWPF.MVVM.Views
 
 
 
+
+
         private void btn_add_Click(object sender, RoutedEventArgs e)
         {
             ContactService.Add( new ContactModel {
@@ -42,12 +44,6 @@ namespace AddressBookWPF.MVVM.Views
             });
 
             ClearForm();
-
-            /*  var button = (Button)sender;
-              var contact = (ContactModel)button.DataContext;
-
-
-              ContactService.Add(contact);*/
 
         }
 

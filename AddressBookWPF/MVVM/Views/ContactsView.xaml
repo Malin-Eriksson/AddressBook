@@ -50,37 +50,38 @@
                 <TextBlock Text="Change the fields below to update contact information." Margin="5 5 5 15"/>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Grid.Column="0" Text="First name: " Width="90"/>
-                    <TextBox Grid.Column="1"  Text="{Binding SelectedContact.FirstName}" Width="200" />                    
+                    <TextBox Grid.Column="1" x:Name="TC_FirstName" Text="{Binding SelectedContact.FirstName}" Width="200" />                    
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Grid.Column="0" Text="Last name: " Width="90"/>
-                    <TextBox Grid.Column="1"  Text="{Binding SelectedContact.LastName}" Width="200" />
+                    <TextBox Grid.Column="1" x:Name="TC_LastName" Text="{Binding SelectedContact.LastName}" Width="200" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Grid.Column="0" Text="Email address: " Width="90"/>
-                    <TextBox Grid.Column="1"  Text="{Binding SelectedContact.Email}" Width="200" />
+                    <TextBox Grid.Column="1" x:Name="TC_Email" Text="{Binding SelectedContact.Email}" Width="200" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Grid.Column="0" Text="Phone number: " Width="90"/>
-                    <TextBox Grid.Column="1"  Text="{Binding SelectedContact.PhoneNumber}" Width="200" />
+                    <TextBox Grid.Column="1" x:Name="TC_PhoneNumber" Text="{Binding SelectedContact.PhoneNumber}" Width="200" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Grid.Column="0" Text="Street address: " Width="90"/>
-                    <TextBox Grid.Column="1"  Text="{Binding SelectedContact.StreetAddress}" Width="200" />
+                    <TextBox Grid.Column="1" x:Name="TC_StreetAddress" Text="{Binding SelectedContact.StreetAddress}" Width="200" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Grid.Column="0" Text="Postal code: " Width="90"/>
-                    <TextBox Grid.Column="1"  Text="{Binding SelectedContact.PostalCode}" Width="200" />
+                    <TextBox Grid.Column="1" x:Name="TC_PostalCode" Text="{Binding SelectedContact.PostalCode}" Width="200" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Grid.Column="0" Text="City: " Width="90"/>
-                    <TextBox Grid.Column="1"  Text="{Binding SelectedContact.City}" Width="200" />
+                    <TextBox Grid.Column="1" x:Name="TC_City" Text="{Binding SelectedContact.City}" Width="200" />
                 </StackPanel>
               
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <Button Command="{Binding RemoveCommand}" Content="Remove" Width="100" Margin="5 15 5 5"/>
                     <Button Command = "{Binding UpdateCommand}" Content="Save updates" Width="100" Margin="5 15 5 5" />
+                    <Button x:Name="CancelUpdate" Click="CancelUpdate_Click" Content="Cancel update" Width="100" Margin="5 15 5 5" />
                 </StackPanel>
             </StackPanel>
 
