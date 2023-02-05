@@ -79,9 +79,9 @@
               
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Command="{Binding RemoveCommand}" Content="Remove" Width="100" Margin="5 15 5 5"/>
-                    <Button Command = "{Binding UpdateCommand}" Content="Save updates" Width="100" Margin="5 15 5 5" />
-                    <Button x:Name="CancelUpdate" Click="CancelUpdate_Click" Content="Cancel update" Width="100" Margin="5 15 5 5" />
+                    <Button Command="{Binding RemoveCommand}" Content="Remove" Width="90" Margin="5 15 5 5"/>
+                    <Button Command = "{Binding UpdateCommand}" Content="Save updates" Width="90" Margin="5 15 5 5" />
+                    <Button x:Name="CancelUpdate" Click="CancelUpdate_Click" Content="Cancel update" Width="90" Margin="5 15 5 5" />
                 </StackPanel>
             </StackPanel>
 
